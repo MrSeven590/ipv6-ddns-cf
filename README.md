@@ -90,10 +90,11 @@ pnpm start
 
 #### 3. 获取 Record ID
 
+（前提是dns记录存在，否则返回空，无法获取到Record ID）
 使用以下命令查询（替换 `{ZONE_ID}` 和 `{TOKEN}`）：
 
 ```bash
-curl -X GET "https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/dns_records?type=AAAA&name={域名}" \
+curl -X GET "https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/dns_records" \
   -H "Authorization: Bearer {TOKEN}"
 ```
 
@@ -186,7 +187,6 @@ ipv6-ddns-cf/
 
 ## ⚠️ 注意事项
 
-- **敏感信息保护**：`.env` 文件包含敏感信息，已被 `.gitignore` 忽略，请勿提交到公开仓库
 - **代码修改**：修改代码后需重新编译：`pnpm build && pm2 restart ipv6-ddns-cf`
 - **API 限流**：Cloudflare API 有限流，但本服务仅在 IP 变化时调用，频率很低
 - **IPv6 环境**：需要本机有公网 IPv6 地址才能正常工作
