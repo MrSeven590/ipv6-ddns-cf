@@ -1,7 +1,7 @@
 {
-  "name": "my-ddns",
+  "name": "ipv6-ddns-cf",
   "version": "1.0.0",
-  "description": "",
+  "description": "轻量级 IPv6 DDNS 服务，自动更新 Cloudflare DNS 记录",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
