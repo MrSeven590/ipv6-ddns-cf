@@ -1,10 +1,17 @@
 import os from 'os';
 
 /**
- * 获取格式化的时间戳
+ * 获取格式化的时间戳（本地时区）
  */
 function getTimestamp(): string {
-    return new Date().toISOString().replace('T', ' ').substring(0, 19);
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hour = String(now.getHours()).padStart(2, '0');
+    const minute = String(now.getMinutes()).padStart(2, '0');
+    const second = String(now.getSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 }
 
 // ================= 配置区（从环境变量读取）=================
